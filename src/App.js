@@ -7,11 +7,10 @@ export default function App() {
   let [weather, setWeather] = useState(null);
   let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(showWeather);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setWeather(city);
+    axios.get(url).then(showWeather);
   };
 
   function showWeather(response) {
@@ -26,7 +25,7 @@ export default function App() {
           type="text"
           placeholder="City"
           value={city}
-          on={(e) => setCity(e.target.value)}
+          onChange={(e) => setCity(e.target.value)}
         />
         <input type="submit" />
       </form>
@@ -35,7 +34,7 @@ export default function App() {
           <div>
             <ul>
               <li>Weather in {weather.name}</li>
-              <li>Temperature: {weather.main.temp}°C</li>
+              <li>Temperature: {Math.round(weather.main.temp)}°C</li>
               <li>Humidity: {weather.main.humidity}%</li>
             </ul>
           </div>
