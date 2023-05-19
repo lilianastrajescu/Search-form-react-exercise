@@ -15,7 +15,6 @@ export default function App() {
 
   function showWeather(response) {
     setWeather(response.data);
-    console.log(response.data);
   }
 
   return (
