@@ -7,7 +7,7 @@ export default function App() {
   let [weather, setWeather] = useState(null);
   let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(showWeather);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ export default function App() {
 
   function showWeather(response) {
     setWeather(response.data);
-    console.log(response.data);
+   axios.get(url).then(showWeather);
   }
 
   return (
@@ -34,7 +34,7 @@ export default function App() {
         {weather && (
           <div>
             <ul>
-              <li>Weather in {weather.name}</li>
+              <li>Weather in {weather.data.name}</li>
               <li>Temperature: {weather.main.temp}°C</li>
               <li>Humidity: {weather.main.humidity}%</li>
             </ul>
