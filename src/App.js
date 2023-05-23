@@ -11,7 +11,6 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setWeather(response.data);
     axios.get(url).then(showWeather);
       
   };
@@ -29,7 +28,7 @@ export default function App() {
           type="text"
           placeholder="City"
           value={city}
-          on={(e) => setCity(e.target.value)}
+          onChange={(e) => setCity(e.target.value)}
         />
         <input type="submit" />
       </form>
