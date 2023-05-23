@@ -11,16 +11,18 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setWeather(city);
-      axios.get(url).then(showWeather);
+    setWeather(response.data);
+    axios.get(url).then(showWeather);
+      
   };
 
   function showWeather(response) {
     setWeather(response.data);
-    console.log(response.data);
+    
   }
 
   return (
+    
     <div>
       <form onSubmit={handleSubmit}>
         <input
