@@ -7,16 +7,17 @@ export default function App() {
   let [weather, setWeather] = useState(null);
   let apiKey = "ed55b36e362d8733f7d859247cedeaf2";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setWeather(city);
+      axios.get(url).then(showWeather);
   };
 
   function showWeather(response) {
     setWeather(response.data);
-   axios.get(url).then(showWeather);
+    console.log(response.data);
   }
 
   return (
